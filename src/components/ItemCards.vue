@@ -16,7 +16,7 @@
       </div>
       <div class="process"><span>1/2</span></div>
     </div>
-    <div class="items-elements">
+    <div class="elements">
       <label
         :for="`selectedItems${card.id}`"
         class="card-item"
@@ -70,13 +70,15 @@ export default {
   methods: {
     clickSelection(card, status) {
       card.selected = status;
+      console.log(card, 'card');
 
-      const updateRecords = this.records.map((item) => {
-        if (item.id === card?.id) {
-          item = card;
+      const updateRecords = this.records.map((record) => {
+        if (record.id === card.id) {
+          record = card;
+        } else {
+          record.selected = false;
         }
-
-        return item;
+        return record;
       });
 
       store.commit('setRecords', updateRecords);
@@ -105,7 +107,7 @@ footer {
   border-top: 1px solid #e0e0e0;
   box-shadow: 0px 9px 14px #333;
 }
-.section-heading {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
