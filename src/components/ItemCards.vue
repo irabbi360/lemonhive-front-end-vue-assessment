@@ -70,7 +70,6 @@ export default {
   methods: {
     clickSelection(card, status) {
       card.selected = status;
-      console.log(card, 'card');
 
       const updateRecords = this.records.map((record) => {
         if (record.id === card.id) {

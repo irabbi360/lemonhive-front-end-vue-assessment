@@ -3,14 +3,19 @@
     <div class="card-head">
       <carousel-section :config="config"/>
       <item-cards v-if="currentStep === 1" :item="config.flow.pages[0]"/>
+      <item-lists v-if="currentStep === 2" :item="config.flow.pages[1]"/>
       <footer>
-        <div v-if="currentStep === 1" class="btn-outline" @click="this.clickSkip">Skip</div>
-        <div v-if="currentStep === 1" class="btn" @click.prevent="this.clickNext">Next</div>
-        <div v-if="currentStep === 2" class="btn-outline" @click="this.clickRestart">Restart</div>
-        <div class="actions" v-if="currentStep === 2">
-          <div v-if="currentStep === 2" class="btn-outline" @click="this.clickBack">Back</div>
-          <div v-if="currentStep === 2" class="btn">Submit</div>
-        </div>
+        <template v-if="currentStep === 1">
+          <div class="btn-outline" @click="clickSkip()">Skip</div>
+          <div class="btn" @click.prevent="clickNext()">Next</div>
+        </template>
+        <template v-if="currentStep === 2">
+          <div v-if="currentStep === 2" class="btn-outline" @click="clickRestart()">Restart</div>
+          <div class="actions" v-if="currentStep === 2">
+            <div v-if="currentStep === 2" class="btn-outline" @click="clickBack()">Back</div>
+            <div v-if="currentStep === 2" class="btn">Submit</div>
+          </div>
+        </template>
       </footer>
     </div>
     <div class="right-card">
@@ -33,7 +38,7 @@
 import store from '@/store';
 import CarouselSection from '@/components/CarouselSection.vue';
 import ItemCards from '@/components/ItemCards.vue';
-// import ItemLists from '@/components/ItemLists.vue';
+import ItemLists from '@/components/ItemLists.vue';
 
 export default {
   name: 'RightSidebar',
@@ -42,7 +47,7 @@ export default {
   components: {
     CarouselSection,
     ItemCards,
-    // ItemLists
+    ItemLists
   },
   data() {
     return {
@@ -86,7 +91,7 @@ footer {
   box-shadow: 0px 9px 14px #333;
 }
 
-.outline-btn {
+.btn-outline {
   color: #c7a17a;
   cursor: pointer;
   font-size: 14px;
@@ -105,13 +110,13 @@ footer {
   align-items: center;
 }
 
-.actions .outline-btn {
+.btn-outline {
   margin-right: 7px;
   background: rgba(199, 161, 122, 0.16);
   border: none;
 }
 
-.fill-btn {
+.btn {
   color: #fff;
   background-color: #c7a17a;
   cursor: pointer;
