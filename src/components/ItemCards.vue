@@ -33,10 +33,10 @@
           style="display: none"
           @change="clickSelection(card, $event.target.checked)"
         />
-        <div class="thumb">
-          <img :src="card.icon" :alt="card.title" />
+        <div>
+          <img :src="card.icon" :alt="card.title" class="thumb-img" />
         </div>
-        <div class="title">{{ card.title }}</div>
+        <div class="item-title">{{ card.title }}</div>
       </label>
     </div>
   </div>
@@ -130,5 +130,37 @@ footer {
 .process span {
   transform: rotate(-45deg);
   display: block;
+}
+.elements {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  justify-content: space-between;
+  padding-bottom: 70px;
+}
+.card-item {
+  flex-basis: 30%;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  margin: 8px 5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.card-item.active {
+  border: 1px solid #c7a17a;
+}
+
+.card-item.active:after {
+  position: absolute;
+  content: url('../../public/images/active-item.png');
+  top: 0;
+  right: 0%;
+  z-index: 0;
 }
 </style>

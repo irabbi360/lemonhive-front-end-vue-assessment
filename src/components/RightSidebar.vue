@@ -6,14 +6,14 @@
       <item-lists v-if="currentStep === 2" :item="config.flow.pages[1]"/>
       <footer>
         <template v-if="currentStep === 1">
-          <div class="btn-outline" @click="clickSkip()">Skip</div>
-          <div class="btn" @click.prevent="clickNext()">Next</div>
+          <div class="btn-outline" @click="this.clickSkip">Skip</div>
+          <div class="btn" @click.prevent="this.clickNext">Next</div>
         </template>
         <template v-if="currentStep === 2">
-          <div v-if="currentStep === 2" class="btn-outline" @click="clickRestart()">Restart</div>
+          <div v-if="currentStep === 2" class="btn-outline" @click="this.clickRestart">Restart</div>
           <div class="actions" v-if="currentStep === 2">
-            <div v-if="currentStep === 2" class="btn-outline" @click="clickBack()">Back</div>
-            <div v-if="currentStep === 2" class="btn">Submit</div>
+            <div class="btn-outline" @click="this.clickBack">Back</div>
+            <div class="btn">Submit</div>
           </div>
         </template>
       </footer>
