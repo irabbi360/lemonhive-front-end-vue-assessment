@@ -21,3 +21,8 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+.idea/
+/.fleet
+package-lock.json
+yarn.lock
+.DS_Store
